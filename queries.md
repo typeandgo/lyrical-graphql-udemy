@@ -21,3 +21,28 @@ mutation AddSong($title: String) {
     }
   }
 }
+
+###################################################
+
+## Query / mutation
+
+mutation DeleteSong($id: ID) {
+  deleteSong(id: $id) {
+    id
+  }
+}
+
+## Query Variables
+
+{
+  "id": "438596084385069"
+}
+
+## Result
+{
+  "data": {
+    "deleteSong": {
+      "id": "438596084385069"
+    }
+  }
+}

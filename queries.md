@@ -46,3 +46,64 @@ mutation DeleteSong($id: ID) {
     }
   }
 }
+
+###################################################
+
+## Query / mutation
+query GetSong($id: ID!) {
+  song(id: $id) {
+    id
+    title
+  }
+}
+
+
+## Query Variables
+
+{
+  "id": "438596084385069"
+}
+
+## Result
+{
+  "data": {
+    "song": {
+      "id": "438596084385069",
+      "title": "Şarkı Adı"
+    }
+  }
+}
+
+###################################################
+
+## Query / mutation
+mutation AddLyricToSong($songId: ID!, $content: String) {
+  addLyricToSong(songId: $songId, content: $content) {
+    id
+    lyrics {
+      content
+    }
+  }
+}
+
+
+## Query Variables
+
+{
+  "songId": "438596084385069",
+  "content": "It was a long night"
+}
+
+## Result
+{
+  "data": {
+    "addLyricToSong": {
+      "id": "438596084385069",
+      "lyrics": [
+        {
+          content: "It was a long night"
+        }
+      ]
+    }
+  }
+}

@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
-import gql from 'graphql-tag';
+import mutation from '../mutations/addLyric';
 import { graphql } from 'react-apollo';
 
 class LyricCreate extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      content: ''
-    }
+    this.state = { content: '' }
   }
 
   onSubmit(event) {
@@ -26,30 +24,16 @@ class LyricCreate extends Component {
     return (
       <div>
         <form onSubmit={this.onSubmit.bind(this)}>
-
-            <label>Add a Lyric:</label>
-
-            <input
-              type="text"
-              onChange={ event => this.setState({ content: event.target.value }) }
-              value={ this.state.content }
-            />
-
+          <label>Add a Lyric:</label>
+          <input
+            type="text"
+            onChange={ event => this.setState({ content: event.target.value }) }
+            value={ this.state.content }
+          />
         </form>
       </div>
     )
   }
 }
-
-const mutation = gql`
-  mutation AddLyricToSong($songId: ID!, $content: String) {
-    addLyricToSong(songId: $songId, content: $content) {
-      id
-      lyrics {
-        content
-      }
-    }
-  }
-`;
 
 export default graphql(mutation)(LyricCreate);

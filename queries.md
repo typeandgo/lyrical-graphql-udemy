@@ -1,5 +1,4 @@
 ## Query / mutation
-
 mutation AddSong($title: String) {
   addSong(title: $title) {
     id
@@ -25,7 +24,6 @@ mutation AddSong($title: String) {
 ###################################################
 
 ## Query / mutation
-
 mutation DeleteSong($id: ID) {
   deleteSong(id: $id) {
     id
@@ -33,7 +31,6 @@ mutation DeleteSong($id: ID) {
 }
 
 ## Query Variables
-
 {
   "id": "438596084385069"
 }
@@ -59,7 +56,6 @@ query GetSong($id: ID!) {
 
 
 ## Query Variables
-
 {
   "id": "438596084385069"
 }
@@ -88,7 +84,6 @@ mutation AddLyricToSong($songId: ID!, $content: String) {
 
 
 ## Query Variables
-
 {
   "songId": "438596084385069",
   "content": "It was a long night"
@@ -104,6 +99,32 @@ mutation AddLyricToSong($songId: ID!, $content: String) {
           content: "It was a long night"
         }
       ]
+    }
+  }
+}
+
+###################################################
+
+## Query / mutation
+mutation LikeLyric($id: ID) {
+  likeLyric(id: $id) {
+    id,
+    likes
+  }
+}
+
+
+## Query Variables
+{
+  "id": "438596084385069",
+}
+
+## Result
+{
+  "data": {
+    "likeLyric": {
+      "id": "438596084385069",
+      "likes": 3
     }
   }
 }
